@@ -53,8 +53,8 @@ module.exports = {
     //   pathname: path.resolve(__dirname, `shell`),
     //   staticDir: path.resolve(__dirname, 'dist'),
     //   routes: ['/'],
-    //   port: '7890',
-    // }),
+    //   port: '7890'
+    // })
     // new BundleAnalyzerPlugin({
     //   analyzerHost: '127.0.0.1',
     //   analyzerPort: 8989

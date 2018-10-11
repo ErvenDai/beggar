@@ -4,7 +4,8 @@
   "description": "在线乞讨系统",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server --hot"
+    "dev": "NODE_ENV=development webpack-dev-server --hot",
+    "build": "rm -rf dist && NODE_ENV=production webpack --progress --hide-modules"
   },
   "author": "erven, mouyufei",
   "license": "ISC",
@@ -17,6 +18,7 @@
     "eslint-plugin-vue": "^4.7.1",
     "html-webpack-plugin": "^3.2.0",
     "mini-css-extract-plugin": "^0.4.4",
+    "page-skeleton-webpack-plugin": "^0.10.12",
     "prettier": "^1.14.3",
     "style-loader": "^0.23.1",
     "vue-loader": "^15.4.2",
