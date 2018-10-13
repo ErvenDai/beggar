@@ -4,7 +4,7 @@ node_modules
 shell/
 npm-debug.log
 package-lock.json
-
+test.html
 yarn.lock
 yarn-error.log
 

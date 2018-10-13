@@ -2,12 +2,18 @@ const path = require('path');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const fs = require('fs');
+// const WorkboxPlugin = require('workbox-webpack-plugin');
+const ServiceWorkerWebpackPlugin = require('serviceworker-webpack-plugin');
+
 // const { SkeletonPlugin } = require('page-skeleton-webpack-plugin');
 // const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 module.exports = {
   mode: 'development',
-  entry: './src/index.js',
+  entry: {
+    index: './src/index.js'
+  },
   output: {
     path: path.resolve(__dirname, './dist'),
     filename: 'index.bundle.js'
@@ -15,7 +21,12 @@ module.exports = {
   devtool: '#eval-source-map',
   devServer: {
     contentBase: path.join(__dirname, './dist'),
-    port: 9999
+    port: 9999,
+    host: 'beggar.yefun.top',
+    https: {
+      key: fs.readFileSync('ssl/2_beggar.yefun.top.key'),
+      cert: fs.readFileSync('ssl/1_beggar.yefun.top_bundle.crt')
+    }
   },
   module: {
     rules: [
@@ -48,7 +59,11 @@ module.exports = {
       filename: 'index.html',
       template: './index.html'
     }),
-    new VueLoaderPlugin()
+    new VueLoaderPlugin(),
+    new ServiceWorkerWebpackPlugin({
+      entry: path.join(__dirname, 'src/sw.js')
+    })
+    // new WorkboxPlugin.GenerateSW()
     // new SkeletonPlugin({
     //   pathname: path.resolve(__dirname, `shell`),
     //   staticDir: path.resolve(__dirname, 'dist'),

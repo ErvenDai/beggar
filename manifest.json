@@ -1,0 +1,11 @@
+{
+  "name": "求赏点钱",
+  "short_name": "在线乞丐",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#fff",
+  "description": "在线乞讨系统",
+  "related_applications": [{
+    "platform": "web"
+  }]
+}
